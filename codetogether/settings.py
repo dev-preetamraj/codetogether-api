@@ -14,6 +14,8 @@ load_dotenv(dotenv_path=os.path.join(BASE_DIR, '.env'))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv(key='SECRET_KEY')
 REFRESH_SECRET_KEY = os.getenv(key='REFRESH_SECRET_KEY')
+GITHUB_CLIENT_SECRET = os.getenv(key='GITHUB_CLIENT_SECRET')
+GITHUB_CLIENT_ID = os.getenv(key='GITHUB_CLIENT_ID')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
@@ -196,4 +198,4 @@ JWT_SETTINGS = {
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
 
-# python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker
+# python -m gunicorn codetogether.asgi:application -k uvicorn.workers.UvicornWorker

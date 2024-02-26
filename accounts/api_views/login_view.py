@@ -6,17 +6,16 @@ from rest_framework.response import Response
 from accounts.utils.github_provider import GithubProvider
 from accounts.utils.token_manager import TokenManager
 from django.contrib.auth import get_user_model
+from django.conf import settings
 
 User = get_user_model()
 
 logger = logging.getLogger('accounts')
 
-GITHUB_CLIENT_SECRET = '515e227943e8040263be01e49e495a8341cc80c8'
-GITHUB_CLIENT_ID = '9d32be63c83194ffa4ed'
 
 gh_provider = GithubProvider(
-    client_id=GITHUB_CLIENT_ID,
-    client_secret=GITHUB_CLIENT_SECRET
+    client_id=settings.GITHUB_CLIENT_ID,
+    client_secret=settings.GITHUB_CLIENT_SECRET
 )
 token_manager = TokenManager()
 
