@@ -16,9 +16,12 @@ SECRET_KEY = os.getenv(key='SECRET_KEY')
 REFRESH_SECRET_KEY = os.getenv(key='REFRESH_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'RENDER' not in os.environ
 
 ALLOWED_HOSTS = []
+RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+if RENDER_EXTERNAL_HOSTNAME:
+    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 
 # Application definition
@@ -192,3 +195,5 @@ JWT_SETTINGS = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
+
+# python -m gunicorn mysite.asgi:application -k uvicorn.workers.UvicornWorker
