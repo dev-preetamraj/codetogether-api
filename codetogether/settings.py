@@ -21,10 +21,7 @@ GITHUB_CLIENT_ID = os.getenv(key="GITHUB_CLIENT_ID")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "RENDER" not in os.environ
 
-ALLOWED_HOSTS = [
-    "a1e9-2401-4900-7150-aa23-109-ab24-4916-71a3.ngrok-free.app",
-    "127.0.0.1",
-]
+ALLOWED_HOSTS = []
 RENDER_EXTERNAL_HOSTNAME = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
